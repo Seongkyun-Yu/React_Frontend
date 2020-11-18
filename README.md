@@ -14,16 +14,15 @@ www.omegabox.ga 에서 프로젝트를 확인할 수 있습니다.<br>
 
 ## Requirements
 
-- 사용 언어<br>
+- 사용 기술<br>
   HTML5, CSS3, JS6+<br>
-
-- 프레임워크<br>
   React v.16<br>
 
 - 라이브러리
   <details> 
     <summary>접기/펼치기 버튼</summary>
     <div markdown="1">
+      React v.16<br>
       redux v.4.0.5<br>
       react-redux v.7.2.0<br>
       redux-saga v.1.1.3<br>
@@ -51,7 +50,7 @@ www.omegabox.ga 에서 프로젝트를 확인할 수 있습니다.<br>
 <b>로그인과 결제기능에 사용되는 key 파일은 업로드 되지 않았습니다.
 <br> 실행을 위해서는 ysungkyun@gmail.com으로 해당 파일을 요청하셔야 합니다.</b><br>
 
-$ git clone "https://github.com/OmegaBox/React_Frontend.git"<br>
+$ git clone https://github.com/OmegaBox/React_Frontend.git<br>
 $ yarn install<br>
 \$ yarn start<br>
 
