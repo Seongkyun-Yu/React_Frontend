@@ -66,7 +66,7 @@ MEGABOX 홈페이지 제작을 통해 기존의 홈페이지 기능을 구현, �
 
 <br>
 
-## Main Feature by Seongkyun
+## Main Feature (아래에 작성한 기능들은 혼자 개발한 기능입니다)
 
 - 예매 날짜, 상영관, 영화 선택 기능
 - JWT를 활용한 일반 로그인, 소셜 로그인 기능
@@ -87,6 +87,83 @@ MEGABOX 홈페이지 제작을 통해 기존의 홈페이지 기능을 구현, �
 - 극장 위치 정보 표시
 - 선택 불가능한 날짜는 캘린더에 표시되지 않게 수정
 - 선택 불가능한 날짜는 캘린더에 표시되지 않게 수정
+
+<br>
+
+## 프로젝트 구조
+
+```bash
+├── node_modules
+├── public
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── favicon.ico
+│   ├── manifest.json
+│   └── index.html
+├── build
+├── src
+│   ├── Api
+│   │   └── api.js
+│   ├── Components                    <-- Atomic pattern
+│   │   ├── Atoms
+│   │   ├── Molecules
+│   │   ├── Organisms
+│   │   ├── Templates
+│   │   └── Pages
+│   │       ├── style
+│   │       ├── BookingPage.js
+│   │       ├── ErrorPage.js
+│   │       ├── EventPage.js
+│   │       └── ...etc
+│   ├── images
+│   ├── Modules
+│   │   └── ModalPortal.js
+│   ├── Reducer
+│   │   ├── index.js
+│   │   ├── bookingReducer.js
+│   │   ├── bookingSeatReducer.js
+│   │   ├── movieReducer.js
+│   │   ├── userInfoReducer.js
+│   │   └── ...etc
+│   ├── Router
+│   │   ├── MainRouter.js
+│   │   ├── SubLoginSignUpRouter.js
+│   │   ├── SubMypageRouter.js
+│   │   └── SubBookingRouter.js
+│   ├── Utils
+│   │   ├── bookingSeatUtils.js
+│   │   ├── payment.js
+│   │   ├── util.js
+│   │   └── theaterLocation.js
+│   ├── App.js
+│   ├── key.json
+│   ├── common.scss
+│   ├── commonVariable.scss
+│   ├── index.css
+│   └── index.js
+├── README.md
+├── LICENSE
+├── package.json
+├── yarn.lock
+└── .gitignore
+```
+
+## Technical Issue:
+
+- 로그인시 회원정보 관리 문제:
+
+  - JWT Token을 이용(Access, Refresh Token)하고 쿠키 옵션을 secure로 설정
+  - 쿠키 만료 일자를 명시적으로 설정하여 일정 시간 자동로그인 기능 구현
+
+- HTTPS 배포 문제:
+
+  - [AWS - S3, CloudFront, Route53을 이용한 정적호스팅(HTTPS)](https://seongkyun-yu.github.io/2020/08/07/0049-AWS/)
+
+- 영화 리스트 출력 개수 간소화:
+  - IntersectionObserver를 이용한 Lazy Loading 처리
+- 반응형 개발 여부 결정
+  - 상영관 or 영화 우선선택 여부 → 영화 & 시간 선택 → 영화 상영관 선택 → 선택 실패시 뒤로 돌아가서 다시 선택 하는 문제를 한 페이지에서 선택할 수 있는 방향으로 개발
+  - [프로젝트를 반응형으로 개발하지 않은 이유](https://seongkyun-yu.github.io/2020/09/14/0051-whynotResponsive/)
 
 <br>
 
