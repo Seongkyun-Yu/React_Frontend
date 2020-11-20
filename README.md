@@ -24,14 +24,16 @@ MEGABOX 홈페이지 제작을 통해<br>
 
 <br>
 
-## Skill<br>
+## Skill
 
-HTML5, CSS3, JS6+<br>
+HTML5, CSS3, JS6+, Sass<br>
 React v.16<br>
+
+<br>
 
 ## Requirements
 
-- 라이브러리
+- Library
   <details> 
     <summary>접기/펼치기 버튼</summary>
     <div markdown="1">
