@@ -12,11 +12,24 @@ www.omegabox.ga 에서 프로젝트를 확인할 수 있습니다.<br>
 
 <br>
 
-## Requirements
+## Development motivation
 
-- 사용 기술<br>
-  HTML5, CSS3, JS6+<br>
-  React v.16<br>
+MEGABOX 홈페이지 제작을 통해<br>
+
+상품의 선택, 구매, 결제, 취소 기능을 구현하고<br>
+
+프론트와 백엔드 개발자의 협업을 통해 기획 및 커뮤니케이션 능력을 기르고자<br>
+
+이번 프로젝트를 시작하였습니다.<br>
+
+<br>
+
+## Skill<br>
+
+HTML5, CSS3, JS6+<br>
+React v.16<br>
+
+## Requirements
 
 - 라이브러리
   <details> 
@@ -53,18 +66,6 @@ www.omegabox.ga 에서 프로젝트를 확인할 수 있습니다.<br>
 $ git clone https://github.com/OmegaBox/React_Frontend.git<br>
 $ yarn install<br>
 \$ yarn start<br>
-
-<br>
-
-## Development motivation
-
-MEGABOX 홈페이지 제작을 통해<br>
-
-상품의 선택, 구매, 결제, 취소 기능을 구현하고<br>
-
-프론트와 백엔드 개발자의 협업을 통해 기획 및 커뮤니케이션 능력을 기르고자<br>
-
-이번 프로젝트를 시작하였습니다.<br>
 
 <br>
 
