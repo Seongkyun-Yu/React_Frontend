@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style/MainBoxOffice.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -6,7 +6,10 @@ import {
   selectMovie,
   clearSelectedMovies,
 } from "../../../Reducer/bookingReducer";
-import { getSearchMovie } from "../../../Reducer/movieReducer";
+import {
+  getSearchMovie,
+  SET_SEARCH_INPUT,
+} from "../../../Reducer/movieReducer";
 import {
   GET_TIMELINE_LIKE,
   SEND_FAVORITE,
@@ -20,17 +23,25 @@ const MainBoxOffice = () => {
     state.Movie.movies.filter((_, i) => i < 4),
     state.Movie.loading,
   ]);
-  console.log("로딩", movieLoading);
   const { isLogin, favoriteMovies } = useSelector((state) => state.userInfo);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [inputState, setInputState] = useState("");
 
   const mainEnterKeyword = (e) => {
     if (e.keyCode === 13) {
+      dispatch({ type: SET_SEARCH_INPUT, input: inputState });
+      dispatch(getSearchMovie(inputState));
       history.push("/listMovies");
-      dispatch(getSearchMovie(e.target.value));
     }
   };
+
+  const searchBtn = () => {
+    dispatch({ type: SET_SEARCH_INPUT, input: inputState });
+    dispatch(getSearchMovie(inputState));
+    history.push("/listMovies");
+  };
+
   // 해당 영화가 보고싶어 등록이 되있는지 확인하는 함수
   const isFavorite = (movieId) => {
     return (
@@ -58,7 +69,7 @@ const MainBoxOffice = () => {
     if (isLogin) {
       dispatch({ type: GET_TIMELINE_LIKE });
     }
-  }, [isLogin, favoriteMovies.length]);
+  }, [dispatch, isLogin, favoriteMovies.length]);
 
   return (
     <div className="mainBoxOfficeLayout">
@@ -163,18 +174,28 @@ const MainBoxOffice = () => {
                 className="boxOfficeSearchBar"
                 placeholder="영화명을 입력해주세요."
                 title="영화 검색"
+                onChange={(e) => setInputState(e.target.value)}
+                value={inputState}
               />
-              <button type="button" className="iconSearchBtn"></button>
+              <button
+                type="button"
+                className="iconSearchBtn"
+                onClick={searchBtn}
+              ></button>
             </form>
           </li>
-          <li>
-            <span className="iconSchedule" />
-            <span className="boxOfficeSearchBarText">상영시간표</span>
-          </li>
-          <li>
-            <span className="iconBoxOffice" />
-            <span className="boxOfficeSearchBarText">박스오피스</span>
-          </li>
+          <Link to="/Booking">
+            <li>
+              <span className="iconSchedule" />
+              <span className="boxOfficeSearchBarText">상영시간표</span>
+            </li>
+          </Link>
+          <Link to="/listMovies">
+            <li>
+              <span className="iconBoxOffice" />
+              <span className="boxOfficeSearchBarText">박스오피스</span>
+            </li>
+          </Link>
           <Link to="/Booking">
             <li>
               <span className="iconBoxOfficeBooking" />

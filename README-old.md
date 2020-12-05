@@ -12,32 +12,18 @@ www.omegabox.ga 에서 프로젝트를 확인할 수 있습니다.<br>
 
 <br>
 
-## Development motivation
-
-MEGABOX 홈페이지 제작을 통해<br>
-
-상품의 선택, 구매, 결제, 취소 기능을 구현하고<br>
-
-프론트와 백엔드 개발자의 협업을 통해 기획 및 커뮤니케이션 능력을 기르고자<br>
-
-이번 프로젝트를 시작하였습니다.<br>
-
-<br>
-
-## Skill
-
-HTML5, CSS3, JS6+, Sass<br>
-React v.16<br>
-
-<br>
-
 ## Requirements
 
-- Library
+- 사용 언어<br>
+  HTML5, CSS3, JS6+<br>
+
+- 프레임워크<br>
+  React v.16<br>
+
+- 라이브러리
   <details> 
     <summary>접기/펼치기 버튼</summary>
     <div markdown="1">
-      React v.16<br>
       redux v.4.0.5<br>
       react-redux v.7.2.0<br>
       redux-saga v.1.1.3<br>
@@ -65,109 +51,100 @@ React v.16<br>
 <b>로그인과 결제기능에 사용되는 key 파일은 업로드 되지 않았습니다.
 <br> 실행을 위해서는 ysungkyun@gmail.com으로 해당 파일을 요청하셔야 합니다.</b><br>
 
-$ git clone https://github.com/OmegaBox/React_Frontend.git<br>
+$ git clone "https://github.com/OmegaBox/React_Frontend.git"<br>
 $ yarn install<br>
 \$ yarn start<br>
 
 <br>
 
-## Main Feature (혼자 개발한 기능만 작성하였습니다)
+## Contributors
 
-- 예매 날짜, 상영관, 영화 선택 기능
-- JWT를 활용한 일반 로그인, 소셜 로그인 기능
-- 전체 영화 리스트 페이지의 이미지 Lazy Loading 처리
-- 가까운 영화관 기능
-- Bootpay 모듈을 활용한 결제, 예매 취소 기능
-- Naver Map을 이용한 상영관 지도 표시 기능
-- S3, CloudFront, Route53, Amazon Certification을 이용한 배포 작업
-- 전체 프로젝트에서 팀원들이 해결하지 못한 문제들 수정 & 업데이트
+**TEAM : OMEGA**
+
+_Front_
+
+- 유성균 _-PM-_
+  <details> 
+    <summary>작업 내용</summary><br>
+    <div markdown="1">
+
+      - 예매 날짜, 상영관, 영화 선택 기능
+      - JWT를 활용한 일반 로그인, 소셜 로그인 기능
+      - 전체 영화 리스트 페이지의 이미지 Lazy Loading 처리
+      - 가까운 영화관 기능
+      - Bootpay 모듈을 활용한 결제, 예매 취소 기능
+      - Naver Map을 이용한 상영관 지도 표시 기능
+      - S3, CloudFront, Route53, Amazon Certification을 이용한 배포 작업
+      - 전체 프로젝트에서 뭔가 안된다는 기능들 수정 & 업데이트
+
+    </div>
+  </details>
+
+- 김규리
+  <details> 
+    <summary>작업 내용</summary><br>
+    <div markdown="1">
+
+      - 사이트의 전반적인 HTML/CSS 작성
+      - 예매내역 구현
+      - 나의 무비스토리(타임라인, 한줄평, 본영화, 보고싶어 표기) 구현
+      - 이벤트 페이지 구현
+
+    </div>
+  </details>
+
+- 정호영
+  <details> 
+    <summary>작업 내용</summary><br>
+    <div markdown="1">
+
+      - 메인페이지 구현
+      - 전체 영화 페이지 구현
+      - 영화 검색 기능 구현
+      - 영화 상세 페이지 구현
+      - 주요정보 탭의 차트 기능
+      - 한줄평 뷰 구현
+      - 예고편의 영상 재생 기능 구현
+
+    </div>
+  </details>
+
+- 송치원
+  <details> 
+    <summary>작업 내용</summary><br>
+    <div markdown="1">
+
+      - 좌석 선택 기능 구현
+      - 일반 회원가입, 구글 회원가입 기능 구현
+      - 회원 가입 기능에서 올바르지 않는 조건 작성시 회원 가입이 불가능한 기능 구현
+      - 공용 팝업 모듈 제작
+
+    </div>
+  </details>
+
+_Back_
+
+- 신동현
+
+- 권효진
 
 <br>
 
-## Improvements to Megabox
+## Development motivation
 
-- 페이지를 이동할 때마다 로딩창이 뜨지 않도록 상태 관리 처리
-- 좌석 선택 페이지에서 브라우저 상의 뒤로가기 누를 시 선택 옵션이 사라지지 않게 만듦
-- 한 번 검색했던 옵션은 Caching 처리를 통해 api 요청하지 않도록 함
-- 극장 위치 정보 표시
-- 선택 불가능한 날짜는 캘린더에 표시되지 않게 수정
+MEGABOX 홈페이지 제작을 통해 기존의 홈페이지 기능을 구현, 개선하고<br>
+
+프론트와 백엔드 개발자의 협업을 통해 기획 및 커뮤니케이션 능력을 기르고자<br>
+
+이번 프로젝트를 시작하였습니다.<br>
 
 <br>
 
-## 프로젝트 구조
+## Main Feature
 
-```bash
-├── node_modules
-├── public
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── favicon.ico
-│   ├── manifest.json
-│   └── index.html
-├── build
-├── src
-│   ├── Api
-│   │   └── api.js
-│   ├── Components                    <-- Atomic pattern
-│   │   ├── Atoms
-│   │   ├── Molecules
-│   │   ├── Organisms
-│   │   ├── Templates
-│   │   └── Pages
-│   │       ├── style
-│   │       ├── BookingPage.js
-│   │       ├── ErrorPage.js
-│   │       ├── EventPage.js
-│   │       └── ...etc
-│   ├── images
-│   ├── Modules
-│   │   └── ModalPortal.js
-│   ├── Reducer
-│   │   ├── index.js
-│   │   ├── bookingReducer.js
-│   │   ├── bookingSeatReducer.js
-│   │   ├── movieReducer.js
-│   │   ├── userInfoReducer.js
-│   │   └── ...etc
-│   ├── Router
-│   │   ├── MainRouter.js
-│   │   ├── SubLoginSignUpRouter.js
-│   │   ├── SubMypageRouter.js
-│   │   └── SubBookingRouter.js
-│   ├── Utils
-│   │   ├── bookingSeatUtils.js
-│   │   ├── payment.js
-│   │   ├── util.js
-│   │   └── theaterLocation.js
-│   ├── App.js
-│   ├── key.json
-│   ├── common.scss
-│   ├── commonVariable.scss
-│   ├── index.css
-│   └── index.js
-├── README.md
-├── LICENSE
-├── package.json
-├── yarn.lock
-└── .gitignore
-```
+- FrontEnd : 달력, 좌석 선택 알고리즘, 차트, 영상 재생
 
-## Technical Issue:
-
-- 로그인시 회원정보 관리 문제:
-
-  - JWT Token을 이용(Access, Refresh Token)하고 쿠키 옵션을 secure로 설정
-  - 쿠키 만료 일자를 명시적으로 설정하여 일정 시간 자동로그인 기능 구현
-
-- HTTPS 배포 문제:
-
-  - [AWS - S3, CloudFront, Route53을 이용한 정적호스팅(HTTPS)](https://seongkyun-yu.github.io/2020/08/07/0049-AWS/)
-
-- 영화 리스트 출력 개수 간소화:
-  - IntersectionObserver를 이용한 Lazy Loading 처리
-- 반응형 개발 여부 결정
-  - 상영관 or 영화 우선선택 여부 → 영화 & 시간 선택 → 영화 상영관 선택 → 선택 실패시 뒤로 돌아가서 다시 선택 하는 문제를 한 페이지에서 선택할 수 있는 방향으로 개발
-  - [프로젝트를 반응형으로 개발하지 않은 이유](https://seongkyun-yu.github.io/2020/09/14/0051-whynotResponsive/)
+- BackEnd : 데이터간 복잡한 관계 연결, 상속, 커스터 마이징을 고려한 DB 설계
 
 <br>
 

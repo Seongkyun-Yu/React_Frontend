@@ -71,11 +71,19 @@ const resetSignupInfo = () => ({
   type: RESET_SIGNUP_INFO,
 });
 
-const checkLogin = () => async (dispatch) => {
+const checkLogin = (goLogin = false, popup = true) => async (dispatch) => {
   const res = await isLogin();
 
   if (res) dispatch({ type: ALREADY_LOGIN });
-  else dispatch({ type: LOGOUT_SUCCESS });
+  else {
+    dispatch({ type: LOGOUT_SUCCESS });
+    popup &&
+      dispatch(
+        openModal("로그인이 필요한 페이지입니다.", goLogin || null, {
+          oneBtn: true,
+        })
+      );
+  }
 };
 
 const startLogout = () => async (dispatch) => {
@@ -102,18 +110,25 @@ function* loginSaga(action) {
     if (res.status === 200) {
       removeCookies();
 
+      const expires = new Date();
+      expires.setDate(Date.now() + 1000 * 60 * 59);
+
       cookie.save("accessToken", res.data.access, {
         path: "/",
-        maxAge: 3600,
+        maxAge: 3500,
+        expires,
+        secure: true,
       });
 
       cookie.save("refreshToken", res.data.refresh, {
         path: "/",
-        maxAge: 86400,
+        maxAge: 86300,
+        secure: true,
       });
       cookie.save("id", res.data.id, {
         path: "/",
-        maxAge: 86400,
+        maxAge: 86300,
+        secure: true,
       });
 
       yield put({
@@ -148,18 +163,25 @@ const socialLogin = (user, history, signOut) => async (dispatch) => {
     if (res.status === 200) {
       removeCookies();
 
+      const expires = new Date();
+      expires.setDate(Date.now() + 1000 * 60 * 59);
+
       cookie.save("accessToken", res.data.access, {
         path: "/",
-        maxAge: 3600,
+        maxAge: 3500,
+        expires,
+        secure: true,
       });
 
       cookie.save("refreshToken", res.data.refresh, {
         path: "/",
-        maxAge: 86400,
+        maxAge: 86300,
+        secure: true,
       });
       cookie.save("id", res.data.id, {
         path: "/",
-        maxAge: 86400,
+        maxAge: 86300,
+        secure: true,
       });
 
       dispatch({
@@ -178,7 +200,6 @@ const socialLogin = (user, history, signOut) => async (dispatch) => {
       });
     }
   } catch (e) {
-    console.log(e.response);
     // dispatch({
     //   type: LOGIN_ERROR,
     //   errorMessage: "아이디/비밀번호를 확인 해주세요",
@@ -195,6 +216,7 @@ const socialLogin = (user, history, signOut) => async (dispatch) => {
 
 const getMemberProfile = () => async (dispatch) => {
   const res = await isLogin();
+  // console.log("getMemberProfile의 logincheck", res);
 
   if (res) {
     dispatch({ type: GET_MEMBER_DETAIL });
@@ -209,17 +231,18 @@ const getMemberProfile = () => async (dispatch) => {
 };
 
 // 멤버 디테일
-function* memberDetail(action) {
+function* memberDetail() {
   yield put({ type: GET_MEMBER_DETAIL_LOADING });
 
   try {
-    const loginCheck = yield isLogin();
+    // const loginCheck = yield isLogin();
 
-    if (!loginCheck) {
-      yield put(startLogout());
-      return;
-    }
+    // if (!loginCheck) {
+    //   yield put(startLogout());
+    //   return;
+    // }
     const res = yield call(userApi.memberDetail);
+    // console.log("겟 맴버디테일", res);
 
     if (res.status === 200 || res.status === 201) {
       yield put({
@@ -240,7 +263,7 @@ function* memberDetail(action) {
       });
     }
   } catch (e) {
-    console.log("마이페이지 에러", e.response);
+    // console.log("마이페이지 에러", e.response);
 
     yield put({
       // api 연결에 문제가 있을때 이쪽으로 넘어옴.
@@ -255,12 +278,12 @@ function* myReserved(action) {
   yield put({ type: GET_RESERVED_LOADING });
 
   try {
-    const loginCheck = yield isLogin();
+    // const loginCheck = yield isLogin();
 
-    if (!loginCheck) {
-      yield put(startLogout());
-      return;
-    }
+    // if (!loginCheck) {
+    //   yield put(startLogout());
+    //   return;
+    // }
     const res = yield call(userApi.myReserved, { id: action.id });
     if (res.status === 200 || res.status === 201) {
       yield put({
@@ -276,7 +299,7 @@ function* myReserved(action) {
       });
     }
   } catch (e) {
-    console.log("예약내역 에러", e.response);
+    // console.log("예약내역 에러", e.response);
 
     yield put({
       // api 연결에 문제가 있을때 이쪽으로 넘어옴.
@@ -291,12 +314,12 @@ function* myReservedCancel(action) {
   yield put({ type: GET_RESERVED_CANCELED_LOADING });
 
   try {
-    const loginCheck = yield isLogin();
+    // const loginCheck = yield isLogin();
 
-    if (!loginCheck) {
-      yield put(startLogout());
-      return;
-    }
+    // if (!loginCheck) {
+    //   yield put(startLogout());
+    //   return;
+    // }
     const res = yield call(userApi.myReservedCancel, { id: action.id });
     if (res.status === 200 || res.status === 201) {
       yield put({
@@ -312,7 +335,7 @@ function* myReservedCancel(action) {
       });
     }
   } catch (e) {
-    console.log("예약취소 에러", e.response);
+    // console.log("예약취소 에러", e.response);
 
     yield put({
       // api 연결에 문제가 있을때 이쪽으로 넘어옴.
@@ -327,12 +350,12 @@ function* timelineRating(action) {
   yield put({ type: GET_TIMELINE_RATING_LOADING });
 
   try {
-    const loginCheck = yield isLogin();
+    // const loginCheck = yield isLogin();
 
-    if (!loginCheck) {
-      yield put(startLogout());
-      return;
-    }
+    // if (!loginCheck) {
+    //   yield put(startLogout());
+    //   return;
+    // }
     const res = yield call(userApi.timelineRating, { id: action.id });
     if (res.status === 200 || res.status === 201) {
       yield put({
@@ -348,7 +371,7 @@ function* timelineRating(action) {
       });
     }
   } catch (e) {
-    console.log("한줄평 에러", e.response);
+    // console.log("한줄평 에러", e.response);
 
     yield put({
       // api 연결에 문제가 있을때 이쪽으로 넘어옴.
@@ -363,12 +386,12 @@ function* timelineWatched(action) {
   yield put({ type: GET_TIMELINE_WATCHED_LOADING });
 
   try {
-    const loginCheck = yield isLogin();
+    // const loginCheck = yield isLogin();
 
-    if (!loginCheck) {
-      yield put(startLogout());
-      return;
-    }
+    // if (!loginCheck) {
+    //   yield put(startLogout());
+    //   return;
+    // }
     const res = yield call(userApi.timelineWatched, { id: action.id });
     if (res.status === 200 || res.status === 201) {
       yield put({
@@ -384,7 +407,7 @@ function* timelineWatched(action) {
       });
     }
   } catch (e) {
-    console.log("본영화 에러", e.response);
+    // console.log("본영화 에러", e.response);
 
     yield put({
       // api 연결에 문제가 있을때 이쪽으로 넘어옴.
@@ -399,12 +422,12 @@ function* timelineLike(action) {
   yield put({ type: GET_TIMELINE_LIKE_LOADING });
 
   try {
-    const loginCheck = yield isLogin();
+    // const loginCheck = yield isLogin();
 
-    if (!loginCheck) {
-      yield put(startLogout());
-      return;
-    }
+    // if (!loginCheck) {
+    //   yield put(startLogout());
+    //   return;
+    // }
     const res = yield call(userApi.timelineLike, { id: action.id });
     if (res.status === 200 || res.status === 201) {
       yield put({
@@ -420,7 +443,7 @@ function* timelineLike(action) {
       });
     }
   } catch (e) {
-    console.log("보고싶은 에러", e.response);
+    // console.log("보고싶은 에러", e.response);
 
     yield put({
       // api 연결에 문제가 있을때 이쪽으로 넘어옴.
@@ -433,13 +456,13 @@ function* timelineLike(action) {
 // 보고싶어 요청
 function* sendFavoriteRequest(action) {
   const state = yield select();
-  const loginCheck = yield isLogin();
   const movieId = action.movieId;
+  // const loginCheck = yield isLogin();
 
-  if (!loginCheck) {
-    yield put(startLogout());
-    return;
-  }
+  // if (!loginCheck) {
+  //   yield put(startLogout());
+  //   return;
+  // }
   try {
     yield call(movieApi.registerFavorite, movieId);
     yield put({ type: GET_TIMELINE_LIKE });

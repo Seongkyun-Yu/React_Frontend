@@ -57,6 +57,9 @@
   display: inline-block;
   margin: 40px 0 15px 8px;
   font-weight: 600;
+  .searchKeyword {
+    color: $colorSub;
+  }
 }
 .wholeMovieSearchBarWrap {
   position: relative;
@@ -99,6 +102,7 @@
   width: 230px;
   margin: 0 0 26px 60px;
   .mainRank {
+    display: none;
     position: absolute;
     width: 230px;
     height: 150px;
@@ -110,12 +114,22 @@
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
     background: url("https://www.megabox.co.kr/static/pc/images/main/bg-main-movie-rank.png")
       no-repeat 0 0;
+    z-index: 100;
   }
   .wholeMoviePoster {
     width: 230px;
     height: 331px;
   }
 }
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .wholeMovie:nth-child(4n + 1) {
   margin-left: 0;
 }
@@ -182,14 +196,16 @@
   height: 27px;
   margin: 15px 0 0 0;
   padding: 0;
+  .icon {
+    width: 20px !important;
+  }
   .movieListTitle {
     overflow: hidden;
-    display: block;
     width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
     padding: 0 0 0 1px;
-    font-size: 1.3333em;
+    font-size: 1.8rem;
     font-weight: 400;
     line-height: 1.2em;
   }
@@ -201,6 +217,7 @@
   width: 230px;
   height: 32.5px;
   padding: 10px 0 0 0;
+  font-size: 1.5rem;
   overflow: hidden;
 }
 .movieListOpeningDay {
@@ -245,7 +262,7 @@
 
 .wholeFavoriteScore {
   color: $colorMain;
-  height: 23px;
+  // height: 23px;
   margin-left: 2px;
 }
 

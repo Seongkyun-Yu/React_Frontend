@@ -6,7 +6,7 @@ import Snb from "../Organisms/MyPage/Snb";
 
 const MyMegaBox = () => {
   return (
-    <div>
+    <>
       <Header />
       <main className={["myMegaBox", "clearfix"].join(" ")}>
         <Snb />
@@ -14,7 +14,7 @@ const MyMegaBox = () => {
         <SubMypageRouter />
       </main>
       <Footer />
-    </div>
+    </>
   );
 };
 

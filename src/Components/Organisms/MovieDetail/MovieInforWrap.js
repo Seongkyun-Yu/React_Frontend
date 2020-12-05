@@ -5,12 +5,14 @@ import RatingChart from "../../Molecules/ChartBookingRating";
 import DayAudienceLine from "../../Molecules/LineDayAudience";
 import RaderChartKeyPoint from "../../Molecules/RaderChartKeyPoint";
 import { numWithComma } from "../../../Utils/util";
+import { useHistory, Link } from "react-router-dom";
 
 const MovieInforWrap = () => {
   const movie = useSelector((state) => state.Movie.detail);
   const [fullStoryState, setfullStoryState] = useState({
     fullStory: false,
   });
+  const history = useHistory();
 
   const fullStoryOpen = () => {
     setfullStoryState({
@@ -60,9 +62,7 @@ const MovieInforWrap = () => {
           <span>
             {movie.genres !== undefined &&
               movie.genres.map((genre, i) => {
-                return (
-                  <span key={`movie.${genre}`}>{genre}</span>
-                );
+                return <span key={`movie.${genre}`}>{genre}</span>;
               })}
           </span>
           /<span className="runningTime">{movie.running_time}분</span>
@@ -118,7 +118,9 @@ const MovieInforWrap = () => {
       </ul>
       <div className="movieCommentWrap">
         <p className="sTitle">
-          #살아있다에 대한 <span>5,464</span>개의 이야기가 있어요!
+          {movie.name_kor}에 대한{" "}
+          <span>{movie.ratings && movie.ratings.length}</span>개의 이야기가
+          있어요!
         </p>
         <div className="myComment">
           <div className="profile">
@@ -132,8 +134,7 @@ const MovieInforWrap = () => {
           </div>
           <div className="box">
             <p className="content">
-              <span className="userName">홍길동</span>님{" "}
-              <span className="movieTitle">나의 첫 번째 슈퍼스타</span>재미있게
+              <span className="movieTitle">{movie.name_kor}</span> 재미있게
               보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.
             </p>
             <button
@@ -175,7 +176,7 @@ const MovieInforWrap = () => {
             })}
         </ul>
       </div>
-      <div className="moviePostWrap">
+      {/* <div className="moviePostWrap">
         <div className="subTitleWrap">
           <h3 className="title">무비포스트</h3>
           <button type="button" className={["btn", "regular"].join(" ")}>
@@ -277,28 +278,39 @@ const MovieInforWrap = () => {
             </ul>
           </li>
         </ul>
-      </div>
+      </div> */}
       <div className="eventWrap">
         <div className="subTitleWrap">
           <h3 className="title">이벤트</h3>
-          <button type="button" className={["btn", "regular"].join(" ")}>
+          <button
+            type="button"
+            className={["btn", "regular"].join(" ")}
+            onClick={() => {
+              history.push("/event");
+              window.scrollTo(0, 0);
+            }}
+          >
             더보기
             <span className={["icon", "arrowRight"].join(" ")}></span>
           </button>
         </div>
         <ul className="eventList">
-          <li>
-            <img
-              src="https://img.megabox.co.kr/SharedImg/event/2020/07/03/4UHs4ki7JVk2hwI0PTDbDT3aVyL5aWYu.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://img.megabox.co.kr/SharedImg/event/2020/07/03/4UHs4ki7JVk2hwI0PTDbDT3aVyL5aWYu.jpg"
-              alt=""
-            />
-          </li>
+          <Link to="/event">
+            <li>
+              <img
+                src="https://img.megabox.co.kr/SharedImg/event/2020/07/03/4UHs4ki7JVk2hwI0PTDbDT3aVyL5aWYu.jpg"
+                alt=""
+              />
+            </li>
+          </Link>
+          <Link to="/event">
+            <li>
+              <img
+                src="https://img.megabox.co.kr/SharedImg/event/2020/07/22/EplWadj7fl7bcYkYEvGnormf42d25dto.jpg"
+                alt=""
+              />
+            </li>
+          </Link>
         </ul>
       </div>
     </div>

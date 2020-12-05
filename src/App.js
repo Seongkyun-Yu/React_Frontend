@@ -1,11 +1,13 @@
 import React from "react";
 import MainRouter from "./Router/MainRouter";
+import ModalForm from "./Components/Organisms/ModalForm";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <MainRouter />
-    </div>
+      <ModalForm />
+    </>
   );
 }
 

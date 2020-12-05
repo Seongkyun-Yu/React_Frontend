@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { startLogin, socialLogin } from "../../Reducer/userInfoReducer";
 import GoogleLogin, { useGoogleLogout } from "react-google-login";
 import key from "../../key.json";
-import ModalPortal from "../../Modules/ModalPortal";
-import PopupNotice from "../Molecules/PopupNotice";
 
 const LoginForm = () => {
   const [inputId, setInputId] = useState("");
@@ -19,11 +17,6 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [modal, text, event, w, h] = useSelector((state) => {
-    const Modal = state.modal;
-    return [Modal.modal, Modal.text, Modal.event, Modal.width, Modal.height];
-  });
-
   // 구글 로그아웃
   const { signOut } = useGoogleLogout({
     clientId: key.googleClientId,
@@ -31,7 +24,6 @@ const LoginForm = () => {
   });
 
   const responseGoogle = (response) => {
-    console.log(response);
     const user = {
       email: response.profileObj.email,
       googleId: response.googleId,
@@ -50,18 +42,6 @@ const LoginForm = () => {
           height: "500px",
         }}
       >
-        {modal && (
-          <ModalPortal>
-            <PopupNotice
-              text={text}
-              onEvent={event}
-              popupSize={{
-                width: w,
-                height: "200px",
-              }}
-            />
-          </ModalPortal>
-        )}
         <span className="omega_logo">
           <img src={logo} alt="omegabox Logo" />
         </span>
