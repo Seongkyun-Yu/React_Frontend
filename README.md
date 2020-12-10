@@ -152,6 +152,19 @@ $ yarn install<br>
 └── .gitignore
 ```
 
+<br>
+
+## 프로젝트 관련 생각들
+
+- [나는 왜 부트페이로 결제 기능을 만들었나](https://velog.io/@seongkyun/%EB%82%98%EB%8A%94-%EC%99%9C-%EB%B6%80%ED%8A%B8%ED%8E%98%EC%9D%B4%EB%A1%9C-%EA%B2%B0%EC%A0%9C-%EA%B8%B0%EB%8A%A5%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%97%88%EB%82%98)
+- [나는 왜 반응형으로 개발하지 않았나](https://velog.io/@seongkyun/%EB%82%98%EB%8A%94-%EC%99%9C-%EB%B0%98%EC%9D%91%ED%98%95%EC%9C%BC%EB%A1%9C-%EA%B0%9C%EB%B0%9C%ED%95%98%EC%A7%80-%EC%95%8A%EC%95%98%EB%82%98)
+- [나는 왜 Commit 단위를 작게 나누는가](https://velog.io/@seongkyun/%EB%82%98%EB%8A%94-%EC%99%9C-Commit-%EB%8B%A8%EC%9C%84%EB%A5%BC-%EC%9E%91%EA%B2%8C-%EC%AA%BC%EA%B0%9C%EB%8A%94%EA%B0%80)
+- [나는 왜 리액트를 선택했나](https://velog.io/@seongkyun/%EC%99%9C-%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A5%BC-%EC%84%A0%ED%83%9D%ED%96%88%EB%82%98)
+- [나는 왜 AWS를 선택했나](https://velog.io/@seongkyun/%EB%82%98%EB%8A%94-%EC%99%9C-AWS%EB%A5%BC-%EC%84%A0%ED%83%9D%ED%96%88%EB%82%98)
+- [질문 잘 하는 방법](https://velog.io/@seongkyun/%EC%A7%88%EB%AC%B8-%EC%9E%98%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)
+
+<br>
+
 ## Technical Issue:
 
 - 로그인시 회원정보 관리 문제:
