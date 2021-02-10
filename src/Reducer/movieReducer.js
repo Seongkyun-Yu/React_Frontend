@@ -65,6 +65,7 @@ const getMovies = () => async (dispatch) => {
   dispatch(setLoadingMovie());
   try {
     const res = await movieApi.getMovies();
+    console.log(res);
     if (res.status === 200) {
       if (!Array.isArray(res.data.results)) return;
       dispatch(setSuccessMovie(res.data.results));

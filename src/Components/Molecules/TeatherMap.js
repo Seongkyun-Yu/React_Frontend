@@ -37,6 +37,7 @@ const TheaterMap = () => {
               title={selectedTheater ? selectedTheater.name + " 메가박스" : ""}
               position={{ lat, lng }}
               animation={1}
+              mouseup={"안녕"}
               // onClick={() => {
               //   alert("여기는 N서울타워입니다.");
               // }
